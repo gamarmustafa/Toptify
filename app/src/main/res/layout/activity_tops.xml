@@ -70,7 +70,7 @@
         android:fontFamily="@font/circular_bold"
         android:foreground="?android:attr/selectableItemBackground"
         android:letterSpacing="-0.01"
-        android:text="Top Tracks"
+        android:text="Top Artists"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="22sp"

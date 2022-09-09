@@ -1,5 +1,6 @@
 package com.example.toptify.utils
 
+import com.example.toptify.artists.Artists
 import com.example.toptify.tracks.Tracks
 import retrofit.*
 import retrofit.http.*
@@ -30,6 +31,21 @@ interface API {
         @Query("offset") offset:Int,
         @Query("time_range")time_range:String
     ):Call<Tracks>
+
+    @Headers("Accept: application/json",
+        "Content-Type: application/json")
+    @GET("/v1/me/top/artists")
+    fun getArtists(
+        @Header("Authorization") token: String,
+        @Query("limit") limit: Int,
+        @Query("offset") offset:Int,
+        @Query("time_range")time_range:String
+    ):Call<Artists>
+
+
+
+
+
 
     @POST("/api/token")
     @FormUrlEncoded

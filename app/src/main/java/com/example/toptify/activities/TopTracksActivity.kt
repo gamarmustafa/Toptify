@@ -3,14 +3,10 @@ package com.example.toptify.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
-import com.example.toptify.R
 import com.example.toptify.databinding.ActivityTopTracksBinding
 import com.example.toptify.tracks.Tracks
 import com.example.toptify.utils.API
-import com.example.toptify.utils.Token
-import com.spotify.sdk.android.auth.AccountsQueryParameters.CLIENT_ID
 import retrofit.*
 
 const val API_URL = "https://api.spotify.com"
@@ -37,7 +33,7 @@ class TopTracksActivity : AppCompatActivity() {
 
                     if (response?.body() != null) {
                         Log.i("Tracks Body",response.body().items.toString())
-                        val intent =Intent(this@TopTracksActivity,ResultActivity::class.java)
+                        val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(last 4 weeks)")
                         startActivity(intent)
@@ -62,7 +58,7 @@ class TopTracksActivity : AppCompatActivity() {
 
                     if (response?.body() != null) {
                         Log.i("Tracks Body",response.body().items.toString())
-                        val intent =Intent(this@TopTracksActivity,ResultActivity::class.java)
+                        val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(last 6 months)")
                         startActivity(intent)
@@ -87,7 +83,7 @@ class TopTracksActivity : AppCompatActivity() {
 
                     if (response?.body() != null) {
                         Log.i("Tracks Body",response.body().items.toString())
-                        val intent =Intent(this@TopTracksActivity,ResultActivity::class.java)
+                        val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(all time)")
                         startActivity(intent)
