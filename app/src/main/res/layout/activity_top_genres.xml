@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/top_genres_bg"
-    tools:context=".activities.TopGenres">
+    tools:context=".activities.TopGenresActivity">
 
 
     <Button

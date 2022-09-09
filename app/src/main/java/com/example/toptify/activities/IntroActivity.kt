@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toptify.databinding.ActivityIntroBinding
+import com.spotify.sdk.android.auth.AccountsQueryParameters.CODE
 import com.spotify.sdk.android.auth.AuthorizationClient
 import com.spotify.sdk.android.auth.AuthorizationRequest
 import com.spotify.sdk.android.auth.AuthorizationResponse
@@ -27,11 +28,11 @@ class IntroActivity : AppCompatActivity() {
             val builder =
                 AuthorizationRequest.Builder(
                     CLIENT_ID,
-                    AuthorizationResponse.Type.TOKEN,
+                    AuthorizationResponse.Type.CODE,
                     REDIRECT_URI
                 )
 
-            builder.setScopes(arrayOf("streaming"))
+            builder.setScopes(arrayOf("user-top-read"))
             val request = builder.build()
 
 
@@ -47,15 +48,14 @@ class IntroActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE) {
             val response = AuthorizationClient.getResponse(resultCode, intent)
             when (response.type) {
-                AuthorizationResponse.Type.TOKEN -> {
-                    Log.i("Token",response.toString())
-                    val code = response.toString().substringAfter("@")
-                    Log.i("Token",code)
-                    Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@IntroActivity, TopsActivity::class.java)
-                    intent.putExtra("code",code)
-                    startActivity(intent)
+                AuthorizationResponse.Type.CODE ->{
+                    Log.i("THE CODE",response.code)
+                    val newIntent = Intent(this,TopsActivity::class.java)
+                    newIntent.putExtra("code",response.code)
+                    startActivity(newIntent)
                 }
+
+
                 AuthorizationResponse.Type.ERROR -> {
                     Log.i("Something", "is wrong")
                 }
