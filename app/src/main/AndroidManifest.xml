@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.toptify">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -14,16 +16,16 @@
         android:theme="@style/Theme.Toptify"
         tools:targetApi="31">
         <activity
-            android:name=".TopGenres"
+            android:name=".activities.TopGenres"
             android:exported="false" />
         <activity
-            android:name=".TopArtistsActivity"
+            android:name=".activities.TopArtistsActivity"
             android:exported="false" />
         <activity
-            android:name=".TopTracksActivity"
+            android:name=".activities.TopTracksActivity"
             android:exported="false" />
         <activity
-            android:name=".TopsActivity"
+            android:name=".activities.TopsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"

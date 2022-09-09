@@ -4,59 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/top_bg"
     tools:context=".activities.TopsActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tops_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/tops_text"
+        app:layout_constraintBottom_toTopOf="@+id/btn_top_tracks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/btn_top_tracks"
+
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="300dp"
-        android:shadowColor="@color/black"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/circular_bold"
+        android:foreground="?android:attr/selectableItemBackground"
         android:letterSpacing="-0.01"
+        android:shadowColor="@color/black"
         android:text="Top Tracks"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/btn_top_artists"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
     <Button
         android:id="@+id/btn_top_artists"
+
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/circular_bold"
+        android:foreground="?android:attr/selectableItemBackground"
         android:letterSpacing="-0.01"
         android:text="Top Tracks"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/btn_top_genres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_top_tracks" />
+
     <Button
         android:id="@+id/btn_top_genres"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/circular_bold"
+        android:foreground="?android:attr/selectableItemBackground"
         android:letterSpacing="-0.01"
         android:text="Top Genres"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/ic_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_top_artists" />
+
+    <ImageView
+        android:id="@+id/ic_logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="120dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_top_genres" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
