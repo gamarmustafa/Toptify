@@ -35,7 +35,7 @@ class TopsActivity : AppCompatActivity() {
             AuthorizationClient.clearCookies(this)
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             startActivity((Intent(this,IntroActivity::class.java)))
-
+            finish()
         }
 
 

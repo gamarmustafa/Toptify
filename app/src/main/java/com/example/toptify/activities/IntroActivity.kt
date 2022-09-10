@@ -53,6 +53,7 @@ class IntroActivity : AppCompatActivity() {
                     val newIntent = Intent(this,TopsActivity::class.java)
                     newIntent.putExtra("code",response.code)
                     startActivity(newIntent)
+                    finish()
                 }
 
 
