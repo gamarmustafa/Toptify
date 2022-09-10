@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.TopGenresActivity">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/circular_bold"
@@ -49,6 +50,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/btn_6_month"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text" />
@@ -69,6 +71,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/btn_all_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_4_weeks" />
@@ -80,6 +83,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/circular_bold"
         android:foreground="?android:attr/selectableItemBackground"
@@ -89,6 +93,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_6_month" />

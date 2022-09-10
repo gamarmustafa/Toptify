@@ -1,14 +1,18 @@
 package com.example.toptify.activities
 
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toptify.databinding.ActivityTopsBinding
 import com.example.toptify.utils.API
 import com.example.toptify.utils.Token
+import com.spotify.sdk.android.auth.AuthorizationClient
+import com.spotify.sdk.android.auth.AuthorizationRequest
+import com.spotify.sdk.android.auth.AuthorizationResponse
 import retrofit.*
 
 const val URL = "https://accounts.spotify.com"
@@ -25,6 +29,14 @@ class TopsActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val code: String = bundle!!.getString("code").toString()
          getToken(code)
+
+
+        binding.icLogout.setOnClickListener{
+            AuthorizationClient.clearCookies(this)
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            startActivity((Intent(this,IntroActivity::class.java)))
+
+        }
 
 
     }
