@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
@@ -33,13 +34,19 @@ class TopsActivity : AppCompatActivity() {
 
 
         binding.icLogout.setOnClickListener{
-            AuthorizationClient.clearCookies(applicationContext)
-            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
-            startActivity((Intent(this,IntroActivity::class.java)))
-            finish()
+            openWebView(binding.webview)
         }
+
     }
 
+    private fun openWebView(webView: WebView){
+        val url= "https://accounts.spotify.com/en/logout"
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl(url)
+        Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+        startActivity((Intent(this,IntroActivity::class.java)))
+        finish()
+    }
 
 
 
