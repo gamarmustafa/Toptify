@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.webkit.WebView
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
@@ -32,14 +33,16 @@ class TopsActivity : AppCompatActivity() {
 
 
         binding.icLogout.setOnClickListener{
-            AuthorizationClient.clearCookies(this)
+            AuthorizationClient.clearCookies(applicationContext)
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             startActivity((Intent(this,IntroActivity::class.java)))
             finish()
         }
-
-
     }
+
+
+
+
 
     private fun getToken(code: String) {
         val base64String =

@@ -20,7 +20,6 @@ class TopArtistsActivity : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         val token: String = bundle!!.getString("token").toString()
-
         val retrofit: Retrofit = Retrofit.Builder().baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val service: API = retrofit.create(API::class.java)

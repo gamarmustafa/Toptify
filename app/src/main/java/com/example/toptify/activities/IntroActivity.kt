@@ -1,11 +1,15 @@
 package com.example.toptify.activities
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.toptify.R
 import com.example.toptify.databinding.ActivityIntroBinding
+import com.example.toptify.databinding.DialogProgressBinding
 import com.spotify.sdk.android.auth.AccountsQueryParameters.CODE
 import com.spotify.sdk.android.auth.AuthorizationClient
 import com.spotify.sdk.android.auth.AuthorizationRequest
@@ -14,6 +18,8 @@ import com.spotify.sdk.android.auth.LoginActivity.REQUEST_CODE
 
 
 class IntroActivity : AppCompatActivity() {
+    private var doubleBackToExitPressedOnce = false
+    private lateinit var  mProgressDialog: Dialog
     lateinit var binding: ActivityIntroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +27,7 @@ class IntroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
+            showProgressDialog()
             val CLIENT_ID = "c6c23e3e2f604f9aa1780fe7504e73c6"
             val REQUEST_CODE = 1138
             val REDIRECT_URI = "com.example.toptify://callback"
@@ -49,7 +56,9 @@ class IntroActivity : AppCompatActivity() {
             val response = AuthorizationClient.getResponse(resultCode, intent)
             when (response.type) {
                 AuthorizationResponse.Type.CODE ->{
+                    hideProgressDialog()
                     Log.i("THE CODE",response.code)
+                    Toast.makeText(this, "Logged in successfully!", Toast.LENGTH_SHORT).show()
                     val newIntent = Intent(this,TopsActivity::class.java)
                     newIntent.putExtra("code",response.code)
                     startActivity(newIntent)
@@ -65,6 +74,32 @@ class IntroActivity : AppCompatActivity() {
         }else{
             Log.i("Hello",requestCode.toString())
         }
+    }
+
+    fun doubleBackToExit(){
+        if(doubleBackToExitPressedOnce){
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please press back again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed({doubleBackToExitPressedOnce = false},2000) //if the user clicks back twice within 2 seconds,
+        // app will be closed
+    }
+
+    override fun onBackPressed() {
+        doubleBackToExit()
+    }
+    fun showProgressDialog(){
+        val binding : DialogProgressBinding = DialogProgressBinding.inflate(layoutInflater)
+        mProgressDialog = Dialog(this)
+        mProgressDialog.setContentView(R.layout.dialog_progress)
+        mProgressDialog.show()
+    }
+
+    fun hideProgressDialog(){
+        mProgressDialog.dismiss()
     }
 
 }
