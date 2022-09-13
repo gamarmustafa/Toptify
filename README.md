@@ -12,4 +12,4 @@ APIs and third party librabires used in this project:👩🏻‍💻
 * [Retrofit](https://github.com/square/retrofit)
 * [Gson](https://github.com/google/gson)
 * [Picasso](https://square.github.io/picasso/)
-
+* [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
