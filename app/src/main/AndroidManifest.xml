@@ -13,33 +13,45 @@
         android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Toptify"
         tools:targetApi="31">
         <activity
-            android:name=".activities.GenreResultActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.GenreResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ArtistResultActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TrackResultActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TopGenresActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TopArtistsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TopTracksActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TopsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +60,8 @@
         </activity>
         <activity
             android:name=".activities.IntroActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

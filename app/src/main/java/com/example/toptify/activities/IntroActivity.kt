@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.toptify.R
 import com.example.toptify.databinding.ActivityIntroBinding
 import com.example.toptify.databinding.DialogProgressBinding
@@ -17,9 +18,8 @@ import com.spotify.sdk.android.auth.AuthorizationResponse
 import com.spotify.sdk.android.auth.LoginActivity.REQUEST_CODE
 
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
     private var doubleBackToExitPressedOnce = false
-    private lateinit var  mProgressDialog: Dialog
     lateinit var binding: ActivityIntroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,15 +91,6 @@ class IntroActivity : AppCompatActivity() {
     override fun onBackPressed() {
         doubleBackToExit()
     }
-    fun showProgressDialog(){
-        val binding : DialogProgressBinding = DialogProgressBinding.inflate(layoutInflater)
-        mProgressDialog = Dialog(this)
-        mProgressDialog.setContentView(R.layout.dialog_progress)
-        mProgressDialog.show()
-    }
 
-    fun hideProgressDialog(){
-        mProgressDialog.dismiss()
-    }
 
 }

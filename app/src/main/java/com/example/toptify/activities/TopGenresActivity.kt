@@ -10,7 +10,7 @@ import com.example.toptify.databinding.ActivityTopGenresBinding
 import com.example.toptify.utils.API
 import retrofit.*
 
-class TopGenresActivity : AppCompatActivity() {
+class TopGenresActivity : BaseActivity() {
     lateinit var  binding:ActivityTopGenresBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityTopGenresBinding.inflate(layoutInflater)
@@ -23,15 +23,16 @@ class TopGenresActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create()).build()
         val service: API = retrofit.create(API::class.java)
         binding.btn4Weeks.setOnClickListener {
+            showProgressDialog()
             val listCall: Call<Artists> =service.getArtists(": Bearer "+token,30,0, FOUR_WEEKS)
             listCall.enqueue(object : Callback<Artists> {
                 override fun onResponse(response: Response<Artists>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Artists Body",response.body().items.toString())
                         val intent = Intent(this@TopGenresActivity,GenreResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Artists\n(last 4 weeks)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 
@@ -48,15 +49,16 @@ class TopGenresActivity : AppCompatActivity() {
             })
         }
         binding.btn6Month.setOnClickListener {
+            showProgressDialog()
             val listCall: Call<Artists> =service.getArtists(": Bearer "+token,30,0, SIX_MONTHS)
             listCall.enqueue(object : Callback<Artists> {
                 override fun onResponse(response: Response<Artists>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Artists Body",response.body().items.toString())
                         val intent = Intent(this@TopGenresActivity,GenreResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Artists\n(last 6 months)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 
@@ -73,15 +75,16 @@ class TopGenresActivity : AppCompatActivity() {
             })
         }
         binding.btnAllTime.setOnClickListener {
+            showProgressDialog()
             val listCall: Call<Artists> =service.getArtists(": Bearer "+token,30,0, ALL_TIME)
             listCall.enqueue(object : Callback<Artists> {
                 override fun onResponse(response: Response<Artists>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Artists Body",response.body().items.toString())
                         val intent = Intent(this@TopGenresActivity,GenreResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Artists\n(all time)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 

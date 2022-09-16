@@ -13,7 +13,7 @@ const val API_URL = "https://api.spotify.com"
 const val FOUR_WEEKS = "short_term"
 const val SIX_MONTHS = "medium_term"
 const val ALL_TIME = "long_term"
-class TopTracksActivity : AppCompatActivity() {
+class TopTracksActivity : BaseActivity() {
     lateinit var binding : ActivityTopTracksBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityTopTracksBinding.inflate(layoutInflater)
@@ -21,21 +21,21 @@ class TopTracksActivity : AppCompatActivity() {
         setContentView(binding.root)
         val bundle: Bundle? = intent.extras
         val token: String = bundle!!.getString("token").toString()
-
         val retrofit: Retrofit = Retrofit.Builder().baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val service: API = retrofit.create(API::class.java)
 
         binding.btn4Weeks.setOnClickListener {
+            showProgressDialog()
             val listCall:Call<Tracks> =service.getTracks(": Bearer "+token,20,0, FOUR_WEEKS)
             listCall.enqueue(object : Callback<Tracks>{
                 override fun onResponse(response: Response<Tracks>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Tracks Body",response.body().items.toString())
                         val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(last 4 weeks)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 
@@ -52,15 +52,16 @@ class TopTracksActivity : AppCompatActivity() {
             })
         }
         binding.btn6Month.setOnClickListener {
+            showProgressDialog()
             val listCall:Call<Tracks> =service.getTracks(": Bearer "+token,20,0, SIX_MONTHS)
             listCall.enqueue(object : Callback<Tracks>{
                 override fun onResponse(response: Response<Tracks>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Tracks Body",response.body().items.toString())
                         val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(last 6 months)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 
@@ -77,15 +78,16 @@ class TopTracksActivity : AppCompatActivity() {
             })
         }
         binding.btnAllTime.setOnClickListener {
+            showProgressDialog()
         val listCall:Call<Tracks> =service.getTracks(": Bearer "+token,20,0, ALL_TIME)
             listCall.enqueue(object : Callback<Tracks>{
                 override fun onResponse(response: Response<Tracks>?, retrofit: Retrofit?) {
 
                     if (response?.body() != null) {
-                        Log.i("Tracks Body",response.body().items.toString())
                         val intent =Intent(this@TopTracksActivity,TrackResultActivity::class.java)
                         intent.putExtra("list",response.body())
                         intent.putExtra("title","Top Tracks\n(all time)")
+                        hideProgressDialog()
                         startActivity(intent)
                     }
 

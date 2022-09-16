@@ -22,7 +22,7 @@ const val CLIENT_ID = "c6c23e3e2f604f9aa1780fe7504e73c6"
 const val CLIENT_SECRET = "8400b843e13a461d84c7b0b2855f4522"
 const val REDIRECT_URI = "com.example.toptify://callback"
 
-class TopsActivity : AppCompatActivity() {
+class TopsActivity : BaseActivity() {
     lateinit var binding: ActivityTopsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityTopsBinding.inflate(layoutInflater)
@@ -65,20 +65,29 @@ class TopsActivity : AppCompatActivity() {
             override fun onResponse(response: Response<Token>?, retrofit: Retrofit?) {
 
                 if (response?.body() != null) {
-                    Log.i("Tokennnnn", response.body().access_token)
+
                     binding.btnTopTracks.setOnClickListener {
+                        showProgressDialog()
                         val intent = Intent(this@TopsActivity, TopTracksActivity::class.java)
                         intent.putExtra("token",response.body().access_token)
+                        hideProgressDialog()
                         startActivity(intent)
+
+
                     }
                     binding.btnTopArtists.setOnClickListener {
+                        showProgressDialog()
                         val intent = Intent(this@TopsActivity, TopArtistsActivity::class.java)
                         intent.putExtra("token",response.body().access_token)
+                        hideProgressDialog()
                         startActivity(intent)
+
                     }
                     binding.btnTopGenres.setOnClickListener {
+                        showProgressDialog()
                         val intent = Intent(this@TopsActivity, TopGenresActivity::class.java)
                         intent.putExtra("token",response.body().access_token)
+                        hideProgressDialog()
                         startActivity(intent)
                     }
                 }
