@@ -35,7 +35,7 @@ Here are some screenshots from the app:📸
   <img alt="Dark" src="https://user-images.githubusercontent.com/73064753/193609213-5913aec7-3873-430a-a420-1f11fbed84c1.jpg" width=30%">
   &nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="Dark" src="https://user-images.githubusercontent.com/73064753/193609305-666726f7-6ed5-4670-b9be-50012e1effa3.jpg" width=30%">
-</p>!
+</p>
 
 
 
