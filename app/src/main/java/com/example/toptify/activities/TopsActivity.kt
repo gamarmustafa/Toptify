@@ -70,6 +70,7 @@ class TopsActivity : BaseActivity() {
                         showProgressDialog()
                         val intent = Intent(this@TopsActivity, TopTracksActivity::class.java)
                         intent.putExtra("token",response.body().access_token)
+                        Log.i("TOKEN", response.body().access_token)
                         hideProgressDialog()
                         startActivity(intent)
 
@@ -99,9 +100,7 @@ class TopsActivity : BaseActivity() {
             override fun onFailure(t: Throwable?) {
                 Log.e("Error", t!!.message.toString())
             }
-
         })
-
     }
 
     private fun get64BaseString(value: String): String {

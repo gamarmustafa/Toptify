@@ -1,13 +1,10 @@
 package com.example.toptify.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.toptify.R
 import com.example.toptify.artists.Artists
 import com.example.toptify.databinding.ActivityTopArtistsBinding
-import com.example.toptify.tracks.Tracks
 import com.example.toptify.utils.API
 import retrofit.*
 
@@ -65,7 +62,7 @@ class TopArtistsActivity : BaseActivity() {
 
 
                     if (response?.body() == null) {
-                        Log.i("Response!", "null response body /4weeks")
+                        Log.i("Response!", "null response body /6months")
                     }
                 }
 
@@ -91,7 +88,7 @@ class TopArtistsActivity : BaseActivity() {
 
 
                     if (response?.body() == null) {
-                        Log.i("Response!", "null response body /4weeks")
+                        Log.i("Response!", "null response body /alltime")
                     }
                 }
 
